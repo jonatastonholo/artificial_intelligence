@@ -1,0 +1,32 @@
+Relatório Jonatas Tonholo
+
+Passo 1:
+
+Alterei a função de avaliação do agente reflexivo, que antes apenas retornava o score do sucessor.
+No meu código, utilizei a distância de manhattan (que já havia sido importada no arquivo multiAgents.py - dica).
+Primeiro eu ordeno a lista antiga de comidas utilizando a diferença entre a distância de manhattan nova posição em relação ao x e a nova posição em relação à y.
+Obtenho um foodscore utilizando a distância de manhattan e a nova posição.
+
+Pego a posição atual dos fantasmas e crio um score para eles. Criei uma função que Compare que verifica a distânciade manhattan da posição antiga com a nova dos fantasmas.
+O Score do fantasma serve para afastar o pacman, Ele é negativo e é dividido pela distancia de manhattan da nova posição do pacman e a posição do fantasma. De começo, se ele não comeu nada, seu score já é o valor de score do fantasma + 2 (para dar vantagem). Nos outros casos, o score do pacman é o processo inverso.
+Isso tudo para afastar o pacman do fantasma.
+
+Com essa implementação o pacman consegue ganhar várias vezes, mas seus movimentos são burros.
+Sempre ganha no testClassic, ganha muitas vezes com 1 fantasma e perde algunas vezes com 2 fantasmas.
+Consegui ganhar com -g DirectionalGhost, mas também perdi. Os fantasmas têm uma inteligência melhor.
+
+---
+Passo 2:
+Tanto quando o teste terminal indica que o estado é de vitória ou de derrota, a função MINlMAX_VALUE, linha 218, retorna o estado, por isso, se a morte é inevitável, ele caminha em direção à ela.
+
+---
+Passo 3:
+A poda alfa-beta gerou resultados semelhantes ao minimax.
+
+---
+Passo 4:
+O agente ExpectimaxAgent ganha metade das vezes, enquanto o AlphaBetaAgent sempre perde. Isso acontece porque ele pega a média quando é a vez do Min (fantasma) jogar. Com isso, ele acaba indo em direção à comida.
+
+---
+Passo 5:
+
